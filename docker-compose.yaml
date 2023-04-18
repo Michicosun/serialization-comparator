@@ -1,0 +1,33 @@
+version: "3.4"
+
+x-common-variables: &common-variables
+  MULTICAST_IP: 239.10.10.10
+  MULTICAST_PORT: 3000
+
+services:
+  proxy:
+    image: michicosun/soa-project-1-proxy
+    environment: *common-variables
+    ports:
+      - "2000:2000/udp"
+  native:
+    image: michicosun/soa-project-1-worker-native
+    environment: *common-variables
+  xml:
+    image: michicosun/soa-project-1-worker-xml
+    environment: *common-variables
+  json:
+    image: michicosun/soa-project-1-worker-json
+    environment: *common-variables
+  yaml:
+    image: michicosun/soa-project-1-worker-yaml
+    environment: *common-variables
+  msgpack:
+    image: michicosun/soa-project-1-worker-msgpack
+    environment: *common-variables
+  protobuf:
+    image: michicosun/soa-project-1-worker-protobuf
+    environment: *common-variables
+  avro:
+    image: michicosun/soa-project-1-worker-avro
+    environment: *common-variables

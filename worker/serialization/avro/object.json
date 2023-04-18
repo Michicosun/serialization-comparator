@@ -1,0 +1,37 @@
+{
+    "type": "record",
+    "name": "Object",
+    "fields": [
+        {
+            "name": "str",
+            "type": "string"
+        },
+        {
+            "name": "array",
+            "type": {
+                "type": "array",
+                "items": "long"
+            }
+        },
+        {
+            "name": "map",
+            "type": {
+                "type": "map",
+                "items": "string",
+                "values": "long"
+            }
+        },
+        {
+            "name": "number",
+            "type": "long"
+        },
+        {
+            "name": "floating_number",
+            "type": "double"
+        },
+        {
+            "name": "boolean",
+            "type": "boolean"
+        }
+    ]
+}

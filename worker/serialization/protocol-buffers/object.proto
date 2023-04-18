@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package protobuf_serialization;
+
+message Object {
+    string str = 1;
+    repeated uint64 array = 2;
+    map<string, uint64> map = 3;
+    uint64 number = 4;
+    double floating_number = 5;
+    bool boolean = 6;
+}
