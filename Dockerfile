@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-WORKDIR /soa-course/project-1
+WORKDIR /serialization-comparator
 
 # Install package dependencies
 RUN apt-get update && \

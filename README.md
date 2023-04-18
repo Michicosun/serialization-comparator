@@ -13,7 +13,7 @@
 Все образы залиты в docker-hub, поэтому для запуска достаточно запустить docker-compose
 
 ```bash
-path/soa-course/project-1$ docker-compose up
+path/serialization-comparator$ docker-compose up
 ```
 
 ## Build images
@@ -21,7 +21,7 @@ path/soa-course/project-1$ docker-compose up
 Для начала нужно создать базовый образ, в котором соберется CMake проект и нужные бинари.
 
 ```bash
-path/soa-course/project-1$ docker build . -f Dockerfile -t soa-project-1-base
+path/serialization-comparator$ docker build . -f Dockerfile -t soa-project-1-base
 ```
 
 После этого образ soa-project-1-base, собранный на прошлом этапе будет переиспользоваться в worker/proxy образах, это сделано, чтобы ускорить сборку.
@@ -29,13 +29,13 @@ path/soa-course/project-1$ docker build . -f Dockerfile -t soa-project-1-base
 Создание worker image, в аргументах указывается прослушиваемый порт и метод сериализации
 
 ```bash
-path/soa-course/project-1$ docker build . -f worker/Dockerfile -t soa-project-1-worker-xml --build-arg PORT=2025 --build-arg METHOD=xml
+path/serialization-comparator$ docker build . -f worker/Dockerfile -t soa-project-1-worker-xml --build-arg PORT=2025 --build-arg METHOD=xml
 ```
 
 Создание proxy image, в аргументах указывается прослушиваемый порт и порт, на котором слушают воркеры
 
 ```bash
-path/soa-course/project-1$ docker build . -f proxy/Dockerfile -t soa-project-1-proxy --build-arg PROXY_PORT=2000 --build-arg WORKER_PORT=2025
+path/serialization-comparator$ docker build . -f proxy/Dockerfile -t soa-project-1-proxy --build-arg PROXY_PORT=2000 --build-arg WORKER_PORT=2025
 ```
 
 ## Формат запросов
@@ -60,7 +60,7 @@ path/soa-course/project-1$ docker build . -f proxy/Dockerfile -t soa-project-1-p
 Пример запроса и ответа через netcat:
 
 ```bash
-~/soa-course/project-1$ cat | nc -uq0 127.0.0.1 2000
+~/serialization-comparator$ cat | nc -uq0 127.0.0.1 2000
 
 {"method": "get_result", "params": ["json"]}
 json - 122b - 1884ns - 775ns
